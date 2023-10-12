@@ -1,10 +1,11 @@
 
 class CuentaBancaria:
 
-    def __init__(self, tasa_interés, balance):
+    def __init__(self, tasa_interés, balance, nombre):
         self.tasa_interés = tasa_interés
         self.balance = balance
-
+        self.nombre = nombre
+"""
     def depósito(self, amount):
         self.balance += amount
         return self
@@ -25,29 +26,36 @@ class CuentaBancaria:
         return self
 
     def mostrar_info_cuenta(self):
-        print(self.balance)
+        print(self.balance)"""
 
 
 class Usuario:
-    def __init__(self, nombre, savings):
+    def __init__(self, nombre, cuentas):
         self.nombre = nombre
-        self.savings = CuentaBancaria(0.02, 0)
+        self.cuentas = cuentas
+    
+            
 
     def hacer_deposito(self, deposito):
-        self.savings.balance += deposito
+        self.cuentas.balance += deposito
 
     def hacer_retiro(self, retiro):
-        self.savings.balance -= retiro
+        self.cuentas.balance -= retiro
 
     def mostrar_balance_usuario(self):
         print(f"Usuario: {self.nombre}")
-        print(f"Usuario: {self.savings.balance}")
+        print(f"Balance: {self.cuentas.balance}")
+        print(f"Cuenta: {self.cuentas.nombre}")
 
+cuentarut = CuentaBancaria(0.02,100, "Cuenta rut")
+cuentacorriente = CuentaBancaria(0.02, 500, "Cuenta Corriente")
 
-
-usuario1 = Usuario("Chris", ())
-usuario1.hacer_deposito(100)
-usuario1.hacer_deposito(100)
-usuario1.hacer_deposito(100)
+usuario1 = Usuario("Chris", cuentacorriente)
+usuario1.hacer_deposito(200)
+usuario1.hacer_retiro(100)
+usuario1.mostrar_balance_usuario()
+print("--------------")
+usuario1 = Usuario("Chris", cuentarut)
+usuario1.hacer_deposito(200)
 usuario1.hacer_retiro(100)
 usuario1.mostrar_balance_usuario()
